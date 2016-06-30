@@ -1,0 +1,17 @@
+<!--
+/**
+ * Copyright © 2016 Magento. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
+
+<?php
+$dataPostParam = '';
+if ($block->isLoggedIn()) {
+    $dataPostParam = sprintf(" data-post='%s'", $block->getPostParams());
+}
+?>
+<a class="authentication-link" <?php /* @escapeNotVerified */ echo $block->getLinkAttributes(); ?><?php /* @escapeNotVerified */ echo $dataPostParam; ?>
+    data-mage-init='{"AnaRW_MiniLogin/js/minilogin":{}}'>
+    <?php echo $block->escapeHtml($block->getLabel()); ?>
+</a>
