@@ -1,0 +1,125 @@
+// /**
+//  * Copyright © 2015 Magento. All rights reserved.
+//  * See COPYING.txt for license details.
+//  */
+
+//
+//  Common
+//  _____________________________________________
+
+& when (@media-common = true) {
+  .minicart-wrapper {
+    .block-minicart.panel-minicart {
+      .lib-css(transition, right .3s, 1);
+      height: 100%;
+      right: -320px;
+      overflow: auto;
+      position: fixed;
+      top: 0;
+      width: 320px;
+      display: block;
+      min-width: 290px;
+      margin-top:0;
+    }
+  }
+  .cart-before-open {
+    height: 100%;
+    overflow-x: hidden;
+    width: 100%;
+
+    .page-wrapper {
+      .lib-css(transition, right .3s, 1);
+      height: 100%;
+      right: 0;
+      overflow: hidden;
+      position: relative;
+    }
+
+    body {
+      height: 100%;
+      overflow: hidden;
+      position: relative;
+      width: 100%;
+    }
+  }
+
+  .cart-open {
+    .minicart-wrapper .panel-minicart {
+      @_shadow: 0 0 5px 0 rgba(50, 50, 50, .75);
+
+      .lib-css(box-shadow, @_shadow, 1);
+      right: 0;
+      z-index: 99;
+    }
+
+    .cart-toggle {
+      &:after{
+        background: rgba(0,0,0,.01);
+        content: '';
+        display: block;
+        height: 100%;
+        position: fixed;
+        right:0;
+        top: 0;
+        width: 100%;
+        z-index: 1;
+      }
+    }
+  }
+
+}
+
+//
+//  Mobile
+//  _____________________________________________
+
+@active-nav-cart-indent: 54px;
+.media-width(@extremum, @break) when (@extremum = 'max') and (@break = @screen__m) {
+  .cart-open {
+    .page-wrapper {
+      right: 290px;
+    }
+  }
+  .minicart-wrapper {
+    .block-minicart.panel-minicart {
+      width: 290px;
+    }
+  }
+}
+
+//
+//  Desktop
+//  _____________________________________________
+
+.media-width(@extremum, @break) when (@extremum = 'min') and (@break = @screen__m) {
+//  .nav-sections {
+//    .lib-vendor-prefix-flex-shrink(0);
+//    .lib-vendor-prefix-flex-basis(auto);
+//    margin-bottom: @indent__m;
+//
+//    &-item-title {
+//      display: none;
+//    }
+//
+//    &-item-content {
+//      display: block !important;
+//    }
+//
+//    &-item-content > * {
+//      display: none;
+//    }
+//
+//    &-item-content > .navigation {
+//      display: block;
+//    }
+//  }
+//
+//  .lib-main-navigation-desktop();
+//
+//  .panel.header {
+//    .links,
+//    .switcher {
+//      display: inline-block;
+//    }
+//  }
+}
