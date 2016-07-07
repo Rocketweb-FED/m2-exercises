@@ -52,7 +52,7 @@
       z-index: 99;
     }
 
-    .cart-toggle {
+    .action.showcart {
       &:after{
         background: rgba(0,0,0,.01);
         content: '';
@@ -85,41 +85,4 @@
       width: 290px;
     }
   }
-}
-
-//
-//  Desktop
-//  _____________________________________________
-
-.media-width(@extremum, @break) when (@extremum = 'min') and (@break = @screen__m) {
-//  .nav-sections {
-//    .lib-vendor-prefix-flex-shrink(0);
-//    .lib-vendor-prefix-flex-basis(auto);
-//    margin-bottom: @indent__m;
-//
-//    &-item-title {
-//      display: none;
-//    }
-//
-//    &-item-content {
-//      display: block !important;
-//    }
-//
-//    &-item-content > * {
-//      display: none;
-//    }
-//
-//    &-item-content > .navigation {
-//      display: block;
-//    }
-//  }
-//
-//  .lib-main-navigation-desktop();
-//
-//  .panel.header {
-//    .links,
-//    .switcher {
-//      display: inline-block;
-//    }
-//  }
 }
