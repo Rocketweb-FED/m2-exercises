@@ -1,0 +1,85 @@
+<?php
+/**
+ * Copyright © 2015 Magento. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+
+// @codingStandardsIgnoreFile
+
+?>
+<?php
+/**
+ * Create account form template
+ *
+ * @var $block \Magento\Customer\Block\Form\Register
+ */
+?>
+<div class="block-authentication">
+    <div class="block">
+        <div class="block-title">
+            <strong><?php echo __('Create Account'); ?></strong>
+        </div>
+        <div class="block-content">
+            <form class="form-create-account" action="<?php /* @escapeNotVerified */ echo $block->getPostActionUrl() ?>" method="post" id="form-validate-login" enctype="multipart/form-data" autocomplete="off">
+                <fieldset class="fieldset create info">
+                    <legend><span><?php /* @escapeNotVerified */ echo __('Personal Information') ?></span></legend><br>
+                    <input type="hidden" name="success_url" value="<?php /* @escapeNotVerified */ echo $block->getSuccessUrl() ?>">
+                    <input type="hidden" name="error_url" value="<?php /* @escapeNotVerified */ echo $block->getErrorUrl() ?>">
+                    <?php echo $block->getLayout()->createBlock('Magento\Customer\Block\Widget\Name')->setObject($block->getFormData())->setForceUseCustomerAttributes(true)->toHtml() ?>
+                    <div class="field required">
+                        <label for="email_address" class="label"><span><?php /* @escapeNotVerified */ echo __('Email') ?></span></label>
+                        <div class="control">
+                            <input type="email" name="email" id="email_address_login" value="<?php echo $block->escapeHtml($block->getFormData()->getEmail()) ?>" title="<?php /* @escapeNotVerified */ echo __('Email') ?>" class="input-text" data-validate="{required:true, 'validate-email':true}">
+                        </div>
+                    </div>
+                    <?php if ($block->isNewsletterEnabled()): ?>
+                        <div class="field newsletter">
+                            <input type="checkbox" name="is_subscribed" title="<?php /* @escapeNotVerified */ echo __('Receive Specials And Promotions') ?>" value="1" id="is_subscribed"<?php if ($block->getFormData()->getIsSubscribed()): ?> checked="checked"<?php endif; ?> class="checkbox">
+                            <label for="is_subscribed" class="label"><span><?php /* @escapeNotVerified */ echo __('Receive Specials And Promotions') ?></span></label>
+                        </div>
+                    <?php endif ?>
+
+                </fieldset>
+                <fieldset class="fieldset create account" data-hasrequired="<?php /* @escapeNotVerified */ echo __('* Required Fields') ?>">
+                    <legend><span><?php /* @escapeNotVerified */ echo __('Sign-in Information') ?></span></legend><br>
+
+                    <div class="field password required">
+                        <label for="password" class="label"><span><?php /* @escapeNotVerified */ echo __('Password') ?></span></label>
+                        <div class="control">
+                            <input type="password" name="password" id="password" title="<?php /* @escapeNotVerified */ echo __('Password') ?>" class="input-text" data-validate="{required:true, 'validate-password':true}" autocomplete="off">
+                        </div>
+                    </div>
+                    <div class="field confirmation required">
+                        <label for="password-confirmation" class="label"><span><?php /* @escapeNotVerified */ echo __('Confirm Password') ?></span></label>
+                        <div class="control">
+                            <input type="password" name="password_confirmation" title="<?php /* @escapeNotVerified */ echo __('Confirm Password') ?>" id="password-confirmation" class="input-text" data-validate="{required:true, equalTo:'#password'}" autocomplete="off">
+                        </div>
+                    </div>
+                </fieldset>
+                <div class="actions-toolbar">
+                        <button type="submit" class="action submit" title="<?php /* @escapeNotVerified */ echo __('Create an Account') ?>"><span><?php /* @escapeNotVerified */ echo __('Create an Account') ?></span></button>
+                </div>
+            </form>
+            <script>
+                require([
+                    'jquery',
+                    'mage/mage'
+                ], function($){
+
+                    var dataForm = $('#form-validate-login');
+                <!--    var ignore = --><?php ///* @escapeNotVerified */ echo $_dob->isEnabled() ? '\'input[id$="full"]\'' : 'null'; ?><!--;-->
+
+                    dataForm.mage('validation', {
+                        ignore:  ':hidden'
+                    }).find('input:text').attr('autocomplete', 'off');
+
+                });
+            </script>
+        </div>
+        <div class="block-content">
+            <button type="button" class="open-another">
+                <span><?php echo __('Have an Account? Sign in here.'); ?></span>
+            </button>
+        </div>
+    </div>
+</div>

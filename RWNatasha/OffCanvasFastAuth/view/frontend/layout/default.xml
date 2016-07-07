@@ -1,0 +1,35 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © 2015 Magento. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+        <referenceBlock name="register-link" remove="true" />
+        <referenceBlock name="authorization-link-login" remove="true" />
+        <referenceBlock name="authorization-link" remove="true" />
+        <referenceBlock name="my-account-link" remove="true" />
+        <referenceContainer name="page.top">
+            <block class="Magento\Framework\View\Element\Template" name="register-login-popups" template="RWNatasha_OffCanvasFastAuth::account/fast-account.phtml">
+                <block class="Magento\Framework\View\Element\Template" name="register-popup-global" as="register-popup-global" template="RWNatasha_OffCanvasFastAuth::account/register-popup.phtml">
+                    <block class="Magento\Customer\Block\Form\Register" name="fast_customer_form_register" template="RWNatasha_OffCanvasFastAuth::account/form/register.phtml" />
+                </block>
+                <block class="Magento\Customer\Block\Account\AuthenticationPopup" name="authentication-popup-global" as="authentication-popup-global" template="RWNatasha_OffCanvasFastAuth::account/authentication-popup.phtml">
+                    <block class="Magento\Customer\Block\Form\Login" name="fast_customer_form_login" template="RWNatasha_OffCanvasFastAuth::account/form/login.phtml" />
+                </block>
+            </block>
+        </referenceContainer>
+        <referenceBlock name="top.links">
+            <block class="Magento\Customer\Block\Account\AuthorizationLink" name="authorization-link-desktop"
+                   template="RWNatasha_OffCanvasFastAuth::account/link/sign_in.phtml" >
+                <arguments>
+                    <argument name="label_in" xsi:type="string">Account</argument>
+                    <argument name="label_out" xsi:type="string">Logout</argument>
+                </arguments>
+
+            </block>
+        </referenceBlock>
+    </body>
+</page>

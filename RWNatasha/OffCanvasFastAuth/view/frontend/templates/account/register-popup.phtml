@@ -1,0 +1,18 @@
+<?php
+/**
+ * Copyright © 2015 Magento. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+
+// @codingStandardsIgnoreFile
+?>
+<div id="registerPopup" data-bind="scope:'registerPopup'" class="off-canvas-popup-item _show">
+    <?php echo $block->getChildHtml(); ?>
+   <script type="text/x-magento-init">
+        {
+            "*": {
+                "Magento_Ui/js/block-loader": "<?php /* @escapeNotVerified */ echo $block->getViewFileUrl('images/loader-1.gif'); ?>"
+            }
+        }
+    </script>
+</div>

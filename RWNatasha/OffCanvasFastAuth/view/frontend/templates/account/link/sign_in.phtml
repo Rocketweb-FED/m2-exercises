@@ -1,0 +1,37 @@
+<?php
+/**
+ * Copyright © 2015 Magento. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+
+// @codingStandardsIgnoreFile
+
+/** @var $block \Magento\Customer\Block\Account\AuthorizationLink */
+$login_label = $block->getLabelIn();
+$logout_label = $block->getLabelOut();
+$dataPostParam = '';
+if (!$block->isLoggedIn()):
+//    $dataPostParam = sprintf(" data-post='%s'", $block->getPostParams());
+?>
+    <li class="authorization-link">
+        <a class="action show-auth"><?php echo $login_label; ?></a>
+    </li>
+    <script type="text/x-magento-init">
+    {
+        ".authorization-link": {
+             "offcanvasauth":{}
+        }
+    }
+    </script>
+<?php else :
+        $dataPostParam = sprintf(" data-post='%s'", $block->getPostParams());
+     ?>
+    <li>
+        <a title="<?php echo __('Account'); ?>" href="<?php echo $block->getUrl('customer/account');?>"><?php echo __('Account'); ?></a>
+    </li>
+    <li class="authorization-link" data-label="<?php echo $block->escapeHtml(__('or')); ?>">
+        <a <?php /* @escapeNotVerified */ echo $block->getLinkAttributes(); ?><?php /* @escapeNotVerified */ echo $dataPostParam; ?>>
+            <?php echo $logout_label; ?>
+        </a>
+    </li>
+<?php endif; ?>
