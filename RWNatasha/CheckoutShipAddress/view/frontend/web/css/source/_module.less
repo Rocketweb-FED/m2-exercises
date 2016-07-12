@@ -1,0 +1,76 @@
+// /**
+//  * Copyright © 2015 Magento. All rights reserved.
+//  * See COPYING.txt for license details.
+//  */
+
+//
+//  Common
+//  _____________________________________________
+
+& when (@media-common = true) {
+    #shipping, #shipping-new-address-form {
+        .fieldset {
+            .field {
+                .lib-form-field-type-revert(@_type: block);
+                &.required {
+                    label:after {
+                        position: static;
+                        top: auto;
+                        margin-left: 0;
+                    }
+                }
+            }
+        }
+
+        .actions {
+            margin-bottom: 20px;
+            button {
+                width: 49%;
+                background-color: transparent;
+                border-radius: 0;
+                border-color: #F2F2F2;
+                + button {
+                    float: right;
+                }
+
+                &.active, &:hover, &:active {
+                    background-color: #F2F2F2;
+                    box-shadow: none;
+                }
+            }
+        }
+    }
+}
+
+//
+//    Mobile @screen__s
+//--------------------------------------
+.media-width(@extremum, @break) when (@extremum = 'max') and (@break = @screen__s) {
+    #shipping, #shipping-new-address-form {
+        .actions {
+            button {
+                width: 100%;
+                margin-bottom: 10px;
+                + button {
+                    float: none;
+                }
+            }
+        }
+    }
+}
+
+//
+//    Mobile @screen__m
+//--------------------------------------
+.media-width(@extremum, @break) when (@extremum = 'max') and (@break = @screen__m) {
+    #shipping-new-address-form {
+        .actions {
+            button {
+                border-color: #ddd;
+                &:hover, &:active, &.active {
+                    background-color: #ddd;
+                }
+            }
+        }
+    }
+}

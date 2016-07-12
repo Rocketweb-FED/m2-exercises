@@ -1,0 +1,30 @@
+<!--
+/**
+ * Copyright © 2015 Magento. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
+<!-- ko foreach: { data: getNamesArea(), as: 'element' } -->
+<!-- ko if: hasTemplate() -->
+<!-- ko template: getTemplate() --><!-- /ko -->
+<!-- /ko -->
+<!-- /ko -->
+<div class="actions" data-bind="mageInit:{shipAddressForm: {}}" >
+    <button type="button" class="google-auto-address active" data-bind="i18n: 'Google Search for your address'"></button>
+    <button type="button" data-bind="i18n: 'Enter your address manually'"></button>
+</div>
+<div id="google-address-search" class="fieldset">
+    <div class="field">
+        <div class="control">
+            <input type="text" name="google-search" />
+            <span class="note" data-bind="i18n:'If address does not generate automatically, please choose Enter your address manually above'"></span>
+        </div>
+    </div>
+</div>
+<div id="complete-form" class="fieldset" style="display: none">
+    <!-- ko foreach: { data: getAddressArea(), as: 'element' } -->
+    <!-- ko if: hasTemplate() -->
+    <!-- ko template: getTemplate() --><!-- /ko -->
+    <!-- /ko -->
+    <!-- /ko -->
+</div>
