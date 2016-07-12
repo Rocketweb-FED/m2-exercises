@@ -16,10 +16,13 @@ define([
 
     var minicart = $("[data-block='minicart']");
     minicart.on('dropdowndialogopen', function () {
-        initSidebar();
+
     });
 
+    initSidebar();
+
     function initSidebar() {
+
         if (minicart.data('mageSidebar')) {
             minicart.sidebar('update');
         }
