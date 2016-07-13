@@ -8,20 +8,22 @@ define([
     'jquery',
     'ko',
     'sidebar'
-], function (Component, customerData, $, ko) {
+], function (Component, customerData, $, ko, sidebar) {
     'use strict';
 
     var sidebarInitialized = false;
     var addToCartCalls = 0;
 
     var minicart = $("[data-block='minicart']");
-    minicart.on('dropdowndialogopen', function () {
 
+    $('[data-action="toggle-cart"]').on('click', function(){
+        initSidebar();
     });
 
-    initSidebar();
 
     function initSidebar() {
+
+        console.log('init sidebar');
 
         if (minicart.data('mageSidebar')) {
             minicart.sidebar('update');
