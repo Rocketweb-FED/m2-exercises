@@ -7,8 +7,9 @@ define([
     'Magento_Customer/js/customer-data',
     'jquery',
     'ko',
-    'sidebar'
-], function (Component, customerData, $, ko, sidebar) {
+    'sidebar',
+    'offcanvas_panel'
+], function (Component, customerData, $, ko, sidebar, widget) {
     'use strict';
 
     var sidebarInitialized = false;
@@ -16,14 +17,12 @@ define([
 
     var minicart = $("[data-block='minicart']");
 
+
     $('[data-action="toggle-cart"]').on('click', function(){
         initSidebar();
     });
 
-
     function initSidebar() {
-
-        console.log('init sidebar');
 
         if (minicart.data('mageSidebar')) {
             minicart.sidebar('update');
@@ -37,6 +36,7 @@ define([
             return false;
         }
         sidebarInitialized = true;
+        console.log('init sidebar');
         minicart.sidebar({
             "targetElement": "div.block.block-minicart",
             "url": {

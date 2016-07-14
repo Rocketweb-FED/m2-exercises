@@ -1,19 +1,20 @@
 define([
     'jquery',
-    'Magento_Ui/js/modal/modalToggle'
+    'Magento_Ui/js/modal/modal'
 ],function($, modal){
     'use strict';
 
-    var options = {
-        "toggleEvent": "click",
-        "buttons": [],
-        "content": "#minicart-content-wrapper",
-        "modalClass": "offcanvas",
-        "type": "slide"
-    },
-        element = $('[data-action="toggle-cart"]');
+    return function(config, el) {
+        $(el).on(config.toggleEvent, function() {
+            var widget = $(config.content).modal(config),
+                state = widget.data('mage-modal').options.isOpen;
 
-    $(function () {
-        modal(options, element);
-    });
+            if (state) {
+                widget.modal('closeModal');
+            } else {
+                widget.modal('openModal');
+            }
+            return false;
+        });
+    };
 });
