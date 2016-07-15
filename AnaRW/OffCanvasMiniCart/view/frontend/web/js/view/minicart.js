@@ -9,18 +9,13 @@ define([
     'ko',
     'sidebar',
     'offcanvas_panel'
-], function (Component, customerData, $, ko, sidebar, widget) {
+], function (Component, customerData, $, ko, sidebar, offcanvas_panel) {
     'use strict';
 
     var sidebarInitialized = false;
     var addToCartCalls = 0;
 
     var minicart = $("[data-block='minicart']");
-
-
-    $('[data-action="toggle-cart"]').on('click', function(){
-        initSidebar();
-    });
 
     function initSidebar() {
 
@@ -36,7 +31,6 @@ define([
             return false;
         }
         sidebarInitialized = true;
-        console.log('init sidebar');
         minicart.sidebar({
             "targetElement": "div.block.block-minicart",
             "url": {
@@ -75,19 +69,33 @@ define([
     return Component.extend({
         shoppingCartUrl: window.checkout.shoppingCartUrl,
         initialize: function () {
-            var self = this;
-            this._super();
-            this.cart = customerData.get('cart');
-            this.cart.subscribe(function () {
+            var self = this,
+                cartData = customerData.get('cart'),
+                minicart = $('[data-block="minicart"]');
+
+            this.update(cartData());
+            cartData.subscribe(function (updatedCart) {
                 addToCartCalls--;
                 this.isLoading(addToCartCalls > 0);
                 sidebarInitialized = false;
+                this.update(updatedCart);
                 initSidebar();
+                if(!this.isLoading() && cartContentLoading){
+                    cartContentLoading = false;
+
+                    minicart.offcanvas_panel("open");
+                    setTimeout(function() {
+                        minicart.offcanvas_panel("close");
+                    }, 5000);
+                }
             }, this);
             $('[data-block="minicart"]').on('contentLoading', function(event) {
+                cartContentLoading = true;
                 addToCartCalls++;
                 self.isLoading(true);
             });
+
+            return this._super();
         },
         isLoading: ko.observable(false),
         initSidebar: initSidebar,
