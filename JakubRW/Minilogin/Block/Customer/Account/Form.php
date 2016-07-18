@@ -57,6 +57,11 @@ class Form extends Template
         return $this->getUrl('customer/account/forgotpasswordpost');
     }
 
+    public function getCustomerRegisterActionUrl(){
+
+        return $this->getUrl('customer/account/createpost');
+    }
+
     /**
      * Returns popup config
      *

@@ -57,13 +57,21 @@ define([
                 loginAction(loginData, null, false);
             }
         },
-        forgotpwd: function(theForm) {
-            var loginData = {},
-                formDataArray = $(theForm).serializeArray();
+        register: function(registerForm) {
+            var registerData = {},
+                formDataArray = $(registerForm).serializeArray();
             formDataArray.forEach(function (entry) {
-                loginData[entry.name] = entry.value;
+                registerData[entry.name] = entry.value;
             });
 
+            if($(registerForm).validation()
+                && $(registerForm).validation('isValid')
+            ) {
+                //$(registerForm).submit();
+                console.log(registerData);
+            }
+        },
+        forgotpwd: function(theForm) {
             if($(theForm).validation()
                 && $(theForm).validation('isValid')
             ) {
@@ -76,6 +84,15 @@ define([
             }
             else {
                 $('#forgotpwd-form').addClass('no-display');
+            }
+            return false;
+        },
+        callRegisterForm: function() {
+            if($('#register-form').hasClass('no-display')) {
+                $('#register-form').removeClass('no-display');
+            }
+            else {
+                $('#register-form').addClass('no-display');
             }
             return false;
         },
