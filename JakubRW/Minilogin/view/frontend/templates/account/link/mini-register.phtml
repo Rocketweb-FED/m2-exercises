@@ -1,0 +1,134 @@
+<div data-block="mini_register" class="minilogin-wrapper">
+    <div class="block block-minilogin empty"
+         data-role="dropdownDialog"
+         data-mage-init='{"dropdownDialog":{
+                "appendTo":"[data-block=mini_register]",
+                "triggerTarget":".showregister",
+                "timeout": "2000",
+                "closeOnMouseLeave": false,
+                "closeOnEscape": true,
+                "triggerClass":"active",
+                "parentClass":"active",
+                "triggerEvent" : "click",
+                "buttons":[]}}'>
+        <div id="mini-register-content-wrapper" data-bind="scope: 'mini_register_content'">
+            <h3 class="block-title">Create an Account</h3>
+            <div class="block block-customer-register">
+                <!-- ko foreach: getRegion('messages') -->
+                <!-- ko template: getTemplate() --><!-- /ko -->
+                <!--/ko-->
+                <!-- ko foreach: getRegion('before') -->
+                <!-- ko template: getTemplate() --><!-- /ko -->
+                <!-- /ko -->
+                <div class="block-content" aria-labelledby="block-customer-login-heading">
+                    <form class="form form-register"
+                          method="post"
+                          data-bind="submit:register"
+                          id="register-form" action="<?php echo $block->getCustomerRegisterActionUrl() ?>">
+                        <fieldset class="fieldset create info">
+                            <legend class="legend"><span><?php /* @escapeNotVerified */ echo __('Personal Information') ?></span></legend><br>
+                            <div class="field field-name-firstname required">
+                                <label class="label" for="firstname"><span data-bind="i18n: 'First Name'"></span></label>
+
+                                <div class="control">
+                                    <input name="firstname"
+                                           id="firstname"
+                                           type="text"
+                                           class="input-text"
+                                           data-validate="{required:true}"
+                                           autocomplete="off">
+                                </div>
+                            </div>
+                            <div class="field field-name-lastname required">
+                                <label class="label" for="lastname"><span data-bind="i18n: 'Last Name'"></span></label>
+
+                                <div class="control">
+                                    <input name="lastname"
+                                           id="lastname"
+                                           type="text"
+                                           class="input-text"
+                                           data-validate="{required:true}"
+                                           autocomplete="off">
+                                </div>
+                            </div>
+                            <div class="field email required">
+                                <label class="label" for="email"><span data-bind="i18n: 'Email Address'"></span></label>
+
+                                <div class="control">
+                                    <input name="username"
+                                           id="email"
+                                           type="email"
+                                           class="input-text"
+                                           data-bind="attr: {autocomplete: autocomplete}"
+                                           data-validate="{required:true, 'validate-email':true}">
+                                </div>
+                            </div>
+                        </fieldset>
+                        <fieldset class="fieldset create account">
+                            <legend class="legend"><span><?php /* @escapeNotVerified */ echo __('Sign-in Information') ?></span></legend><br>
+                            <div class="field password required">
+                                <label class="label" for="password"><span data-bind="i18n: 'Password'"></span></label>
+                                <div class="control">
+                                    <input  type="password" 
+                                            name="password" 
+                                            id="password" 
+                                            autocomplete="off" 
+                                            data-validate="{required:true, 'validate-password':true}" 
+                                            class="input-text" 
+                                            aria-required="true">
+                                </div>
+                            </div>
+                            <div class="field confirmation required">
+                                <label class="label" for="password-confirmation"><span data-bind="i18n: 'Confirm Password'"></span></label>
+                                <div class="control">
+                                    <input  type="password" 
+                                            name="password_confirmation" 
+                                            id="password-confirmation" 
+                                            autocomplete="off" 
+                                            data-validate="{required:true, equalTo:'#password'}" 
+                                            class="input-text" 
+                                            title="Confirm Password" 
+                                            aria-required="true">
+                                </div>
+                            </div>
+                            <div class="actions-toolbar">
+                                <div class="buttons">
+                                    <div>
+                                        <button type="submit" class="action" name="send" id="send4">
+                                            <span data-bind="i18n: 'Create Account'"></span>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </fieldset>
+                    </form>
+                    <script type="text/javascript">
+                        /*require([
+                            'jquery'
+                        ], function($){
+                            $('#send3').click(function() {
+                                if ($('#login-form2').valid()) {
+                                    alert("Validation pass");
+                                }
+                                return false;
+                            });
+
+                        });*/
+                    </script>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <script type="text/x-magento-init">
+    {
+        "[data-block='mini_register']": {
+            "Magento_Ui/js/core/app": <?php /* @escapeNotVerified */ echo $block->getJsLayout(); ?>
+        },
+        "*": {
+            "Magento_Ui/js/block-loader": "<?php /* @escapeNotVerified */echo $block->getViewFileUrl('images/loader-1.gif'); ?>"
+        }
+    }
+    </script>
+</div>
+

@@ -1,0 +1,32 @@
+<!--
+/**
+ * Copyright © 2016 Magento. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
+<?php
+/** @var $block \Magento\Customer\Block\Account\AuthorizationLink */
+$login_label = $block->getLabelIn();
+$logout_label = $block->getLabelOut();
+$register_label = $block->getLabelUp();
+$dataPostParam = '';
+if (!$block->isLoggedIn()):
+//    $dataPostParam = sprintf(" data-post='%s'", $block->getPostParams());
+?>
+    <li class="authorization-link">
+        <a class="action showlogin"><?php echo $login_label; ?></a>
+        <div class="minilogin-wrapper" data-block="mini_login" data-bind="scope: 'mini_login_content'"></div>
+    </li>
+    <li class="authorization-link">
+        <a class="action showregister"><?php echo $register_label; ?></a>
+        <div class="miniregister-wrapper" data-block="mini_register" data-bind="scope: 'mini_register_content'"></div>
+    </li>
+<?php else :
+        $dataPostParam = sprintf(" data-post='%s'", $block->getPostParams());
+     ?>
+    <li class="authorization-link" data-label="<?php echo $block->escapeHtml(__('or')); ?>" data-bind="scope: 'mini_login_content'">
+        <a <?php /* @escapeNotVerified */ echo $block->getLinkAttributes(); ?><?php /* @escapeNotVerified */ echo $dataPostParam; ?>>
+            <?php echo $logout_label; ?>
+        </a>
+    </li>
+<?php endif; ?>

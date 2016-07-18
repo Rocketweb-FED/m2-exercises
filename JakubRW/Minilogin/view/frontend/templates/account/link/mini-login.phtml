@@ -1,11 +1,4 @@
 <div data-block="mini_login" class="minilogin-wrapper">
-    <a class="action showlogin" href="<?php /* @escapeNotVerified */
-    echo $this->getHref(); ?>"
-       data-bind="scope: 'mini_login_content'">
-        <span class="text"><?php /* @escapeNotVerified */
-            echo __('Login'); ?></span>
-    </a>
-
     <div class="block block-minilogin empty"
          data-role="dropdownDialog"
          data-mage-init='{"dropdownDialog":{
@@ -16,18 +9,12 @@
                 "closeOnEscape": true,
                 "triggerClass":"active",
                 "parentClass":"active",
-                "triggerEvent" : "mouseenter",
+                "triggerEvent" : "click",
                 "buttons":[]}}'>
         <div id="mini-login-content-wrapper" data-bind="scope: 'mini_login_content'">
             <h3 class="block-title">Login</h3>
             <div class="block block-customer-login"
                  data-bind="attr: {'data-label': $t('or')}">
-                <div class="block-title">
-                    <strong id="block-customer-login-heading"
-                            role="heading"
-                            aria-level="2"
-                            data-bind="i18n: 'Checkout out using your account'"></strong>
-                </div>
                 <!-- ko foreach: getRegion('messages') -->
                 <!-- ko template: getTemplate() --><!-- /ko -->
                 <!--/ko-->
@@ -83,23 +70,12 @@
                                         <span data-bind="i18n: 'Sign In'"></span>
                                     </button>
                                 </div>
-                                <div class="secondary">
-                                    <a class="action" data-bind="attr: {href: registerUrl}">
+                                <!-- <div class="secondary">
+                                    <a class="action showregister" data-bind-jkulig="attr: {href: registerUrl}, click: callRegisterForm">
                                         <span data-bind="i18n: 'Register'"></span>
                                     </a>
-                                </div>
+                                </div> -->
                             </div>
-
-                            <!--<div class="primary">
-                                <button type="submit" class="action action-login secondary" name="send" id="send2">
-                                    <span data-bind="i18n: 'Sign In'"></span>
-                                </button>
-                            </div>
-                            <div class="secondary">
-                                <a class="action" data-bind="attr: {href: forgotPasswordUrl}">
-                                    <span data-bind="i18n: 'Forgot Your Password?'"></span>
-                                </a>
-                            </div>-->
                         </div>
                     </form>
 
