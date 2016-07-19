@@ -10,17 +10,20 @@
 & when (@media-common = true) {
     body {
         &.cms-index-index {
-            &.page-layout-1column {
-                .block.widget {
-                    .products-grid {
-                        .product-item {
-                            width: 100%;
-                        }
-                    }
-                }
-                .columns .column.main {
-                    width: 100%;
-                }
+            .columns .column.main {
+                width: 100%;
+            }
+        }
+    }
+    #owl-demo {
+        .item {
+            position: relative;
+
+            .overlay {
+                position: absolute;
+                top: 10%;
+                left: 5%;
+                background: #fff;
             }
         }
     }
