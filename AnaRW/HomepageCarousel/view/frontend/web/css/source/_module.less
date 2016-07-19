@@ -8,13 +8,6 @@
 //--------------------------------------
 
 & when (@media-common = true) {
-    body {
-        &.cms-index-index {
-            .columns .column.main {
-                width: 100%;
-            }
-        }
-    }
     #owl-demo {
         .item {
             position: relative;
@@ -24,6 +17,13 @@
                 top: 10%;
                 left: 5%;
                 background: #fff;
+            }
+        }
+    }
+    body {
+        &.cms-index-index {
+            .columns .column.main {
+                overflow: hidden;
             }
         }
     }
@@ -40,4 +40,5 @@
 //    Mobile
 //--------------------------------------
 .media-width(@extremum, @break) when (@extremum = 'max') and (@break = @screen__s) {
+
 }

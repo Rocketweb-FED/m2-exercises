@@ -69,33 +69,19 @@ define([
     return Component.extend({
         shoppingCartUrl: window.checkout.shoppingCartUrl,
         initialize: function () {
-            var self = this,
-                cartData = customerData.get('cart'),
-                minicart = $('[data-block="minicart"]');
-
-            this.update(cartData());
-            cartData.subscribe(function (updatedCart) {
+            var self = this;
+            this._super();
+            this.cart = customerData.get('cart');
+            this.cart.subscribe(function () {
                 addToCartCalls--;
                 this.isLoading(addToCartCalls > 0);
                 sidebarInitialized = false;
-                this.update(updatedCart);
                 initSidebar();
-                if(!this.isLoading() && cartContentLoading){
-                    cartContentLoading = false;
-
-                    minicart.offcanvas_panel("open");
-                    setTimeout(function() {
-                        minicart.offcanvas_panel("close");
-                    }, 5000);
-                }
             }, this);
-            $('[data-block="minicart"]').on('contentLoading', function(event) {
-                cartContentLoading = true;
+            $('[data-block="minicart"]').on('contentLoading', function (event) {
                 addToCartCalls++;
                 self.isLoading(true);
             });
-
-            return this._super();
         },
         isLoading: ko.observable(false),
         initSidebar: initSidebar,
