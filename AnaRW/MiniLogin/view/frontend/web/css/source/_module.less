@@ -1,0 +1,38 @@
+//
+//    Common
+//--------------------------------------
+
+& when (@media-common = true) {
+    .page-header {
+        .header.panel {
+            .authentication-link {
+                float: right;
+                padding-left: 20px;
+            }
+        }
+    }
+
+    .modals-wrapper {
+        .popup-authentication {
+            .block-authentication {
+                border-top: none;
+            }
+        }
+    }
+}
+
+
+//
+//    Mobile
+//--------------------------------------
+.media-width(@extremum, @break) when (@extremum = 'max') and (@break = @screen__m) {
+    .page-header {
+        .header.panel {
+            .authentication-link {
+                display: none;
+            }
+        }
+    }
+}
+
+

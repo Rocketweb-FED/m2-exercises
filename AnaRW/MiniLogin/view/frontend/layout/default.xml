@@ -6,9 +6,6 @@
  */
 -->
 <page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
-    <head>
-        <css src="AnaRW_MiniLogin::css/minilogin.css"/>
-    </head>
     <body>
         <referenceBlock name="register-link" remove="true" />
         <referenceBlock name="authorization-link" remove="true" />
