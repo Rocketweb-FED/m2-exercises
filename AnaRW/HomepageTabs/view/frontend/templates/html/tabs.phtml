@@ -1,18 +1,73 @@
-<div data-mage-init='{"mage/tabs":{}}'>
-    <ul>
-        <li data-role="title"><a href="#tabs-1">Title 1</li>
-        <li data-role="title"><a href="#tabs-2">Title 2</li>
-        <li data-role="title"><a href="#tabs-3">Title 3</li>
+<div id="horizontal_tabs1" class="tabs" data-mage-init='{"mage/tabs":{"openedState":"active"}}'>
+    <ul class="tabs-nav">
+        <li data-role="collapsible"><a href="#tabs-1">Tab 1</a></li>
+        <li data-role="collapsible"><a href="#tabs-2">Tab 2</a></li>
+        <li data-role="collapsible"><a href="#tabs-3">Tab 3</a></li>
     </ul>
-    <div id="tabs-1" data-role="content">
-        this is content
+    <div id="tabs-1" data-role="content" class="content">
+        this is content 1
     </div>
-    <div id="tabs-2" data-role="content">
-        this is content
+    <div id="tabs-2" data-role="content" class="content">
+        this is content 2
     </div>
-    <div id="tabs-3" data-role="content">
-        this is content
+    <div id="tabs-3" data-role="content" class="content">
+        this is content 3
     </div>
 </div>
+
+<div id="horizontal_tabs2" class="tabs">
+    <ul class="tabs-nav">
+        <li data-role="collapsible"><a href="#fr-1"><span>Special Offer</span></a></li>
+        <li data-role="collapsible"><a href="#fr-2"><span>Our vision</span></a></li>
+        <li data-role="collapsible"><a href="#fr-3"><span>Tell us what you think</span></a></li>
+    </ul>
+    <div id="fr-1" class="content" data-role="content">
+        <p>This is our special effort</p>
+    </div>
+    <div id="fr-2" class="content" data-role="content">
+        <p>This is our vision</p>
+    </div>
+    <div id="fr-3" class="content" data-role="content">
+        <p>Fill out this form</p>
+    </div>
+</div>
+<script type="text/x-magento-init">
+{
+	"#horizontal_tabs2": {
+		"hp_tabs": {"openedState":"active"}
+    }
+}
+</script>
+
+<div id="horizontal_tabs3" class="tabs">
+    <ul class="tabs-nav">
+        <li><a href="#fragment-1"><span>What is Accordion</span></a></li>
+        <li><a href="#fragment-2"><span>What is Collapsible</span></a></li>
+        <li><a href="#fragment-3"><span>What is Tabs</span></a></li>
+    </ul>
+    <div id="fragment-1" class="content">
+        <p>Magento accordion widget is an extension of the Magento Tabs widget. Accordions are generally used to break content into multiple sections that can be swapped to save space</p>
+    </div>
+    <div id="fragment-2" class="content">
+        <p>The Magento collapsible widget converts a header/content pair into an accordion, where the content is collapsed or expanded on the header click.</p>
+        <p>Unlike the accordion widget is that collapsible is initialized for one title/content pair, while accordion can be initialized for a set of title/contents pairs.</p>
+    </div>
+    <div id="fragment-3" class="content">
+        <p>The Magento tabs widget implements single content area with multiple panels, each associated with a header in a list. It uses the Magento collapsible widget.</p>
+    </div>
+</div>
+<script>
+    require([
+            'jquery',
+            'jquery/ui'
+        ],
+        function($, tabs) {
+            $("#horizontal_tabs3").tabs({
+                openedState: "active"
+            });
+        }
+    );
+</script>
+
 
 
